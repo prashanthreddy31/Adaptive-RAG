@@ -1,0 +1,149 @@
+from langchain_qdrant import QdrantVectorStore
+from langchain_huggingface import HuggingFaceEmbeddings
+from src.core.config import Settings
+
+def get_vector_store(collection: str) -> QdrantVectorStore:
+    return QdrantVectorStore.from_existing_collection(
+        url=Settings.QDRANT_URL,
+        api_key= Settings.QDRANT_API_KEY,
+        collection_name=collection,
+        embedding=HuggingFaceEmbeddings(model_name="BAAI/bge-m3")
+    )
+
+def get_retriever(collection: str, k: int = 5):
+    return get_vector_store(collection).as_retriever(
+        search_kwargs={"k": k}
+    )
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
