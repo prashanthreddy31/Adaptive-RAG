@@ -18,6 +18,11 @@
 
 </div>
 
+
+## Architecture
+
+![System Architecture](Architecture.svg)
+
 ---
 
 ## What is Adaptive RAG?
