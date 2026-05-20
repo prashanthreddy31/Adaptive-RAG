@@ -7,8 +7,8 @@
 [![Python 3.10+](https://img.shields.io/badge/Python-3.10+-3776ab?style=flat-square&logo=python&logoColor=white)](https://www.python.org/)
 [![FastAPI](https://img.shields.io/badge/FastAPI-Backend-009688?style=flat-square&logo=fastapi&logoColor=white)](https://fastapi.tiangolo.com/)
 [![LangGraph](https://img.shields.io/badge/LangGraph-Orchestration-ff6b35?style=flat-square)](https://python.langchain.com/langgraph/)
-[![Qdrant](https://img.shields.io/badge/Qdrant-Vector DB-6c4cdf?style=flat-square)](https://qdrant.tech/)
-[![MongoDB](https://img.shields.io/badge/MongoDB-Chat History-47a248?style=flat-square&logo=mongodb&logoColor=white)](https://mongodb.com/)
+[![Qdrant](https://img.shields.io/badge/Qdrant-Vector-DB-6c4cdf?style=flat-square)](https://qdrant.tech/)
+[![MongoDB](https://img.shields.io/badge/MongoDB-Chat-History-47a248?style=flat-square&logo=mongodb&logoColor=white)](https://mongodb.com/)
 [![Groq](https://img.shields.io/badge/Groq-LLM-f55036?style=flat-square)](https://groq.com/)
 [![Streamlit](https://img.shields.io/badge/Streamlit-UI-ff4b4b?style=flat-square&logo=streamlit&logoColor=white)](https://streamlit.io/)
 
