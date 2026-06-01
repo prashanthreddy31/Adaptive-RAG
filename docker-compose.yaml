@@ -1,0 +1,68 @@
+version: "3.9"
+ 
+# ---------------------------------------------------------------------------
+# Adaptive-RAG – single Dockerfile, two services
+# Usage: docker compose up --build
+# Requires a .env file at the repo root with all API keys.
+# ---------------------------------------------------------------------------
+
+services:
+
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        SERVICE: backend
+    image: adaptive-rag:backend
+    container_name: adaptive_rag_backend
+    restart: unless-stopped
+    ports:
+      - "8000:800"
+    env_file: .env
+    environment: 
+      SERVICE: backend
+      PYTHONBUFFERED: "1"
+    healthcheck: 
+      test: ["CMD", "curl", "-f", "http://localhost:8000/docs"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    networks:
+      - rag_net
+
+  frontend:
+    build: 
+      context: .
+      dockerfile: Dockerfile
+      args: 
+        SERVICE: frontend
+    image: adaptive_rag:frontend
+    container_name: adaptive_rag_frontend
+    restart: unless-stopped
+    ports:
+      - "8501:8501"
+    env_file: .env
+    environment:
+      SERVICE: frontend
+      BACKEND_URL: "http://backend:8000"
+      STREAMLIT_SERVER_HEADLESS: "true"
+      STREMLIT_BROWSER_GATHER_USAGE_STATS: "false"
+      PYTHONBUFFERED: "1"
+    depends_on:
+      backend:
+        condition: service_healthy
+    healthcheck: 
+      test: ["CMD", "curl", "-f", "http://localhost:8501/_stcore/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    networks:
+      - rag_net
+
+networks:
+  rag_net:
+    driver: bridge
+      
